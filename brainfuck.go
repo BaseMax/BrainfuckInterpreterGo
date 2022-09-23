@@ -8,10 +8,10 @@
 package main
 
 import (
-	"bufio"
+	"os"
 	"fmt"
 	"log"
-	"os"
+	"bufio"
 )
 
 const (
