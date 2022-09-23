@@ -107,7 +107,7 @@ func interpret(bf []byte) [MemSize]byte {
 
 func main() {
 	if len(os.Args) < 2 {
-		log.Printf("Usage: %s <file>", os.Args[0])
+		fmt.Printf("Usage: %s <file>", os.Args[0])
 		return
 	}
 
