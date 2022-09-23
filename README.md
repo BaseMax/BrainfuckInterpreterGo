@@ -5,7 +5,7 @@ A Go-based interpreter to read and run Brainfuck programs in pure Go in the simp
 ## Using
 
 ```
-$ go build
+$ CGO_ENABLED=0 go build -o bf .
 $ ./bf
 ```
 
