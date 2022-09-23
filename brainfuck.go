@@ -113,7 +113,7 @@ func main() {
 
 	content, err := readFile(os.Args[1])
 	if err != nil {
-		log.Printf("err occured: %s\n", err.Error())
+		log.Fatalf("err occured: %s\n", err.Error())
 	}
 	res := interpret(content)
 	fmt.Printf("%s\n", res)
