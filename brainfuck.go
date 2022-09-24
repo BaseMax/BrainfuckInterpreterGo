@@ -15,15 +15,15 @@ import (
 )
 
 const (
-	MvRight    byte = '>'
-	MvLeft     byte = '<'
-	IncMem     byte = '+'
-	DecMem     byte = '-'
-	Output     byte = '.'
-	Input      byte = ','
-	BraceOpen  byte = '['
-	BraceClose byte = ']'
-	MemSize         = 30000
+	MvRight    = '>'
+	MvLeft     = '<'
+	IncMem     = '+'
+	DecMem     = '-'
+	Output     = '.'
+	Input      = ','
+	BraceOpen  = '['
+	BraceClose = ']'
+	MemSize    = 30000
 )
 
 var stdinReader = bufio.NewReader(os.Stdin)
@@ -40,38 +40,26 @@ func interpret(bf []byte) [MemSize]byte {
 		outputPointer = 0
 	)
 
-	i := 0
-	for i < len(bf) {
-		if bf[i] == MvRight {
+	for i := 0; i < len(bf); i++ {
+		switch bf[i] {
+		case MvRight:
 			pointer++
-		}
-
-		if bf[i] == MvLeft {
+		case MvLeft:
 			pointer--
-		}
-
-		if bf[i] == IncMem {
+		case IncMem:
 			memory[pointer]++
-		}
-
-		if bf[i] == DecMem {
+		case DecMem:
 			memory[pointer]--
-		}
-
-		if bf[i] == Output {
+		case Output:
 			output[outputPointer] = memory[pointer]
 			outputPointer++
-		}
-
-		if bf[i] == Input {
+		case Input:
 			in, err := stdinReader.ReadByte()
 			if err != nil {
 				panic(err)
 			}
 			memory[pointer] = in
-		}
-
-		if bf[i] == BraceOpen {
+		case BraceOpen:
 			if memory[pointer] == 0 {
 				count := 1
 				for count > 0 {
@@ -83,9 +71,7 @@ func interpret(bf []byte) [MemSize]byte {
 					}
 				}
 			}
-		}
-
-		if bf[i] == BraceClose {
+		case BraceClose:
 			if memory[pointer] != 0 {
 				count := 1
 				for count > 0 {
@@ -99,7 +85,6 @@ func interpret(bf []byte) [MemSize]byte {
 				}
 			}
 		}
-		i++
 	}
 
 	return output
