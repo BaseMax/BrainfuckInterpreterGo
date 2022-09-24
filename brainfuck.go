@@ -23,7 +23,6 @@ const (
 	Input      = ','
 	BraceOpen  = '['
 	BraceClose = ']'
-	MemSize    = 30000
 )
 
 var stdinReader = bufio.NewReader(os.Stdin)
@@ -32,10 +31,10 @@ func readFile(path string) ([]byte, error) {
 	return os.ReadFile(path)
 }
 
-func interpret(bf []byte) [MemSize]byte {
+func interpret(bf []byte) []byte {
 	var (
-		output        [MemSize]byte
-		memory        [MemSize]byte
+		output        []byte
+		memory        []byte
 		pointer       = 0
 		outputPointer = 0
 	)
