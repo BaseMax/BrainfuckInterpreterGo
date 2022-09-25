@@ -9,10 +9,10 @@ package main
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 const (
@@ -34,10 +34,9 @@ func readFile(path string) ([]byte, error) {
 
 func interpret(bf []byte) []byte {
 	var (
-		output        []byte = make([]byte, 30000)
-		memory        []byte = make([]byte, 30000)
-		pointer              = 0
-		outputPointer        = 0
+		memory  = make([]byte, 0)
+		pointer = 0
+		builder = strings.Builder{}
 	)
 
 	for i := 0; i < len(bf); i++ {
@@ -51,8 +50,8 @@ func interpret(bf []byte) []byte {
 		case DecMem:
 			memory[pointer]--
 		case Output:
-			output[outputPointer] = memory[pointer]
-			outputPointer++
+			builder.WriteByte(memory[pointer])
+
 		case Input:
 			in, err := stdinReader.ReadByte()
 			if err != nil {
@@ -87,7 +86,7 @@ func interpret(bf []byte) []byte {
 		}
 	}
 
-	return output
+	return []byte(builder.String())
 }
 
 func main() {
@@ -101,6 +100,6 @@ func main() {
 		log.Fatalf("err occured: %s\n", err.Error())
 	}
 	res := interpret(content)
-	res = bytes.Trim(res, "\x00")
-	fmt.Printf("%#v\n", res)
+	// res = bytes.Trim(res, "\x00")
+	fmt.Printf("%s\n", res)
 }
