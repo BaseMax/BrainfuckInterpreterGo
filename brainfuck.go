@@ -8,10 +8,11 @@
 package main
 
 import (
-	"os"
+	"bufio"
+	"bytes"
 	"fmt"
 	"log"
-	"bufio"
+	"os"
 )
 
 const (
@@ -100,5 +101,6 @@ func main() {
 		log.Fatalf("err occured: %s\n", err.Error())
 	}
 	res := interpret(content)
-	fmt.Printf("%s\n", res)
+    res = bytes.Trim(res, "\x00")
+	fmt.Printf("%#v\n", res)
 }
