@@ -36,8 +36,8 @@ func interpret(bf []byte) []byte {
 	var (
 		output        []byte = make([]byte, 30000)
 		memory        []byte = make([]byte, 30000)
-		pointer       = 0
-		outputPointer = 0
+		pointer              = 0
+		outputPointer        = 0
 	)
 
 	for i := 0; i < len(bf); i++ {
@@ -101,6 +101,6 @@ func main() {
 		log.Fatalf("err occured: %s\n", err.Error())
 	}
 	res := interpret(content)
-    res = bytes.Trim(res, "\x00")
+	res = bytes.Trim(res, "\x00")
 	fmt.Printf("%#v\n", res)
 }
