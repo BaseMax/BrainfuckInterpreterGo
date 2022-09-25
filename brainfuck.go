@@ -33,8 +33,8 @@ func readFile(path string) ([]byte, error) {
 
 func interpret(bf []byte) []byte {
 	var (
-		output        []byte
-		memory        []byte
+		output        []byte = make([]byte, 30000)
+		memory        []byte = make([]byte, 30000)
 		pointer       = 0
 		outputPointer = 0
 	)
