@@ -13,6 +13,8 @@ $ ./bf
 
 **./bf compiler.bf**
 
+After running the program, the program will wait for you to type your BF program, finally you can easily type any character you want. like x to finish and generate C-code.
+
 ```bf
 >+++++[>+++++++<-]>.<<++[>+++++[>+++++++<-]<-]>>.+++++.<++[>-----<-]>-.<++
 [>++++<-]>+.<++[>++++<-]>+.[>+>+>+<<<-]>>>[<<<+>>>-]<<<<<++[>+++[>---<-]<-
