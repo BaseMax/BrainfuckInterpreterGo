@@ -72,7 +72,7 @@ After running the program, the program will wait for you to type your BF program
 
 **./bf hello-world.bf**
 
-```
+```bf
 >++++++++[<+++++++++>-]<.
 >++++[<+++++++>-]<+.
 +++++++..
