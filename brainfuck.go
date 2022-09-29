@@ -108,5 +108,5 @@ func main() {
 
 	res := interpret(content)
 	res = bytes.Trim(res, "\x00")
-	fmt.Printf("%#v\n", res)
+	fmt.Printf("%s\n", string(res))
 }
