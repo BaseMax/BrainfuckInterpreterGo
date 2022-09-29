@@ -8,20 +8,20 @@
 package main
 
 import (
-	"bufio"
+	"os"
 	"fmt"
 	"log"
-	"os"
-	"strings"
+	"bufio"
+	"bytes"
 )
 
 const (
-	MvRight    = '>'
-	MvLeft     = '<'
+	Input      = ','
 	IncMem     = '+'
 	DecMem     = '-'
 	Output     = '.'
-	Input      = ','
+	MvLeft     = '<'
+	MvRight    = '>'
 	BraceOpen  = '['
 	BraceClose = ']'
 )
@@ -104,6 +104,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("err occured: %s\n", err.Error())
 	}
+
 	res := interpret(content)
-	fmt.Printf("%s\n", res)
+	res = bytes.Trim(res, "\x00")
+	fmt.Printf("%#v\n", res)
 }
