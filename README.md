@@ -1,6 +1,6 @@
 # Brainfuck Interpreter in Go
 
-A Go-based interpreter to read and run Brainfuck programs in pure Go in the simplest way.
+A Go-based interpreter to read and run Brainfuck programs in pure Go in the simplest way. (With a C-generator Brainfuck interpreter written in Brainfuck)
 
 ## Using
 
