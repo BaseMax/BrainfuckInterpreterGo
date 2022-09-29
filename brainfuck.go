@@ -34,12 +34,17 @@ func readFile(path string) ([]byte, error) {
 
 func interpret(bf []byte) []byte {
 	var (
-		memory  = make([]byte, 0)
-		pointer = 0
-		builder = strings.Builder{}
+		emptySlice = make([]byte, 10)
+		memory     = make([]byte, 10)
+		pointer    = 0
+		builder    = strings.Builder{}
 	)
 
 	for i := 0; i < len(bf); i++ {
+		// increase memory size if i is higher or equal to length of memory slice
+		if pointer >= len(memory) {
+			memory = append(memory, emptySlice...)
+		}
 		switch bf[i] {
 		case MvRight:
 			pointer++
@@ -100,6 +105,5 @@ func main() {
 		log.Fatalf("err occured: %s\n", err.Error())
 	}
 	res := interpret(content)
-	// res = bytes.Trim(res, "\x00")
 	fmt.Printf("%s\n", res)
 }
